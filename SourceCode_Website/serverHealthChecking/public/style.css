@@ -1,0 +1,297 @@
+#calendar.hidden {
+  display: none;
+}
+
+.chart {
+  width: 80%;
+  height: 60%;
+}
+
+.title {
+  text-align: center;
+  width: 50%;
+  height: 100%;
+  font-size: 40px;
+  text-shadow: 2px 2px 4px rgba(6, 52, 85, 0.5);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#tooltip {
+  position: fixed;
+  display: none;
+  background-color: #556B2F;
+  color: #fff;
+  padding: 5px;
+  border-radius: 5px;
+  z-index: 999;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  width: 100%;
+  height: 170px;
+}
+
+.watch {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-align: left;
+}
+
+#weather-info {
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+#content {
+  width: 100%;
+  height: 650px;
+  background: url(images/bgmedia1.jpg) no-repeat;
+  background-size: cover;
+}
+
+#note {
+  width: 100%;
+  height: 60px;
+  padding: 2% 0 2%;
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  align-items: center;
+}
+.yourhealth {
+  background-color: antiquewhite; 
+  width: 30%;
+  float: right;
+  border-radius: 10px;
+}
+
+#ngaytheodoi {
+  /* padding: 1%; */
+  float: left;
+  padding: 0 0 0 3%;
+}
+
+#lbngaytheodoi {
+  background-color: #8267ff;
+  color: white;
+  font-weight: bold;
+  padding: 7px 10px;
+  border-radius: 10px;
+}
+
+#dob {
+  background-color: #aba2d355;
+  color: #484459;
+  padding: 7px 15px;
+  border: 3px solid #8d7dd8;
+  border-radius: 5px;
+  font-weight: bold;
+  width: 70px;
+}
+
+#stat {
+  /* padding-left: 50%; */
+  /* padding-right: 50px; */
+  display: flex;
+  flex-direction: row;
+}
+
+#notification {
+  background-color: #8267ff;
+  color: white;
+  font-weight: bold;
+  font-size: larger;
+  padding: 7px 10px;
+  margin-left: 10px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* text-shadow: 4px 3px 3px rgba(229, 131, 178, 1); */
+}
+
+@-webkit-keyframes my {
+  0% {
+    background-color: #fff;
+    color: #f82323;
+  }
+
+  50% {
+    background-color: #f82323;
+    color: #fff;
+  }
+
+  100% {
+    background-color: #fff;
+    color: #f82323;
+  }
+}
+
+@-moz-keyframes my {
+  0% {
+    background-color: #fff;
+    color: #f82323;
+  }
+
+  50% {
+    background-color: #f82323;
+    color: #fff;
+  }
+
+  100% {
+    background-color: #fff;
+    color: #f82323;
+  }
+}
+
+@-o-keyframes my {
+  0% {
+    background-color: #fff;
+    color: #f82323;
+  }
+
+  50% {
+    background-color: #f82323;
+    color: #fff;
+  }
+
+  100% {
+    background-color: #fff;
+    color: #f82323;
+  }
+}
+
+@keyframes my {
+  0% {
+    background-color: #fff;
+    color: #f82323;
+  }
+
+  50% {
+    background-color: #f82323;
+    color: #fff;
+  }
+
+  100% {
+    background-color: #fff;
+    color: #f82323;
+  }
+}
+
+.text-animation {
+  /* background: #f82323; */
+  -webkit-animation: my 700ms infinite;
+  -moz-animation: my 700ms infinite;
+  -o-animation: my 700ms infinite;
+  animation: my 700ms infinite;
+}
+
+#canH,
+#canS {
+  background-color: #aba2d355;
+  color: #484459;
+  font-family: UTM Androgyne;
+}
+
+#canvasH {
+  background-image: url(images/heart.gif);
+}
+
+#canvasS {
+  background: url(images/spo2.gif) no-repeat;
+}
+
+#btnBack,
+#btnNext {
+  margin: 10px;
+  padding: 5px;
+  border-radius: 15px;
+  border: 3px solid #8d7dd8;
+  background-color: #aba2d355;
+  color: #484459;
+  width: 90px;
+  font-size: medium;
+  font-weight: bold;
+}
+
+#btnBack:hover,
+#btnNext:hover {
+  background-color: #8267ff;
+  transition-duration: 0.3s;
+  color: #fff;
+}
+
+#btnBack:active,
+#btnNext:active {
+  background-color: #e583b2;
+  border-color: #e583b2;
+  transition-duration: 0s;
+}
+
+@media only screen and (min-width: 801px) {
+
+  .title[id=canH],
+  .title[id=canS] {
+    float: left;
+  }
+
+  .chart {
+    width: 80%;
+  }
+}
+
+@media only screen and (min-width: 601px) and (max-width: 800px) {
+  .title {
+    font-size: 28px;
+    width: 100%;
+  }
+
+  .chart {
+    width: 80%;
+  }
+
+  #stat {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  #notification {
+    padding: 0 0 0 5px;
+    font-size: medium;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .title {
+    font-size: 16px;
+    width: 100%;
+  }
+
+  .chart {
+    width: 100%;
+  }
+
+  #stat {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  #notification {
+    padding: 0 0 0 5px;
+    font-size: medium;
+  }
+}

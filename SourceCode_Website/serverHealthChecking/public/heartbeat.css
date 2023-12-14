@@ -1,0 +1,129 @@
+/* App layout */
+:root {
+  /* Variables for both color schemes */
+  --transition-duration: 0.2s;
+  --border-radius-small: 6px;
+  --border-radius-medium: 10px;
+  --border-radius-large: 15px;
+}
+
+:root {
+  --page-background: #111;
+  --page-color: #ddd;
+  --text-color-muted: #666;
+  --graph-background: transparent;
+  --graph-color: #f76;
+  --backdrop-background: rgba(0, 0, 0, 0.3);
+  --nav-item-background: #151515;
+}
+
+.main-view {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  height: 100%;
+}
+
+.main-view main {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#bpm-icon {
+  width: 0vw;
+  height: 0vw;
+  background-size: cover;
+}
+
+/* BPM and SpO2 circle */
+/* Add these styles for color-coded circles */
+#bpm-display-container {
+  height: 5vw;
+  width: 5vw;
+  max-width: 8vw;
+  max-height: 8vw;
+  margin: 0 auto;
+  border: 9px solid var(--graph-color);
+  border-radius: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0em auto 0 auto;
+  cursor: pointer;
+  transition: border-color var(--transition-duration), transform var(--transition-duration);
+  animation: pulseAnimation 1s infinite;
+}
+
+#bpm-display {
+  text-align: center;
+}
+
+#bpm-display label {
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  color: rgb(15, 41, 210);
+  font-weight: bolder;
+}
+
+#bpm-value {
+  display: block;
+  font-size: 1rem;
+  font-family: UTM Androgyne;
+  color: rgb(42, 165, 161);
+}
+
+#spo2-display {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+#spo2-display label {
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  color: rgb(15, 41, 210);
+  font-weight: bolder;
+}
+
+#spo2-value {
+  display: block;
+  font-size: 1rem;
+  font-family: UTM Androgyne;
+  color: rgb(42, 165, 161);
+}
+
+/* Animation */
+@keyframes pulseAnimation {
+  0% {
+      transform: scale(1);
+  }
+  50% {
+      transform: scale(1.2);
+  }
+  100% {
+      transform: scale(1);
+  }
+}
+
+/* Add these styles for color-coded circles */
+#bpm-display-container.low-risk,
+#bpm-display-container.low-spo2 {
+  border-color: yellow;
+  animation: pulseAnimation 1s infinite; /* Thêm animation vào low-risk */
+}
+
+#bpm-display-container.normal-range,
+#bpm-display-container.normal-spo2 {
+  border-color: green;
+}
+
+#bpm-display-container.high-risk,
+#bpm-display-container.high-spo2 {
+  border-color: red;
+  animation: pulseAnimation 1s infinite; /* Thêm animation vào high-risk */
+}

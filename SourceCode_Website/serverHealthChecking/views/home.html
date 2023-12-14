@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Health Web</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="heartbeat.css">
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+    $(function () {
+      const datePicker = $("#dob");
+
+      datePicker.datepicker({
+        dateFormat: 'yy-mm-dd', // Set the desired date format
+        onSelect: function (dateText, inst) {
+          const selectedDate = new Date(dateText);
+          const day = selectedDate.getDate();
+          handleDayClick(day);
+        }
+      });
+    });
+  </script>
+</head>
+
+<body>
+  <div style="width: 100%">
+
+    <div class="header">
+      <img class="today-icon" src="/images/today.png" alt="Today Icon">
+      <div class="watch">
+        <canvas id="canvas" width="170%" height="170%"></canvas>
+        <div id="weather-info"></div>
+      </div>
+    </div>
+
+    <div id="content">
+
+      <div id="note">
+
+        <div id="ngaytheodoi">
+          <label for="dob" id="lbngaytheodoi">Ngày theo dõi:</label>
+          <input type="text" id="dob" name="dob">
+        </div>
+        
+        <div class="yourhealth" style="margin-left: 50%;">
+          <div style="font-family: UTM Androgyne; color: rgb(6, 55, 39); font-size: x-large; text-align: right;">Sức khỏe bạn hôm nay thế nào?</div>
+          <div id="stat" style="float: right;">
+            <section id="bpm-display-container">
+              <div id="bpm-display">
+                <output id="bpm-value" title="Heart rate"></output>
+                <label for="bpm-value">bpm</label>
+                <div id="bpm-icon"></div>
+              </div>
+            </section>
+            <section id="bpm-display-container">
+              <div id="spo2-display">
+                <output id="spo2-value" title="SpO2"></output>
+                <label for="spo2-value">SpO2(%)</label>
+              </div>
+            </section>
+            <div id="notification" class="text-animation">
+              <span id="text-content"></span>
+              <div id="face-emoji"></div>
+            </div>
+          </div>
+          <!-- <div id="face-emoji" style="font-size: xx-large; text-align: right; margin-right: 10%;"></div> -->
+        </div>
+      </div>
+
+      <div class="chart" style="float: right;">
+        <div style="width: 100%;">
+          <div class="title" id="canH" style="color: rgb(255, 33, 21);">
+            <i class="fa fa-heartbeat" aria-hidden="true"></i> NHỊP TIM
+            <canvas id="canvasH"></canvas>
+          </div>
+          <div class="title" id="canS" style="color: aqua;">
+            % SpO2
+            <canvas id="canvasS"></canvas>
+          </div>
+        </div>
+        <button id="btnBack">Trước đó</button>
+        <button id="btnNext">Sau đó</button>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <script>
+    document.addEventListener('dataUpdated', function () {
+      let alertMessage;
+      const notificationElement = document.getElementById('notification');
+      const textContentElement = document.getElementById('text-content');
+      const faceEmojiElement = document.getElementById('face-emoji');
+
+      if (predict > 0.5) {
+        notificationElement.classList.add('text-animation');
+        alertMessage = 'Có nguy cơ bị bệnh tim';
+      } else {
+        notificationElement.classList.remove('text-animation');
+        alertMessage = 'Không có nguy cơ bị bệnh tim';
+      }
+      textContentElement.textContent = alertMessage;
+      faceEmojiElement.innerHTML = predict > 0.5 ? '😢😢😢' : '😊😊😊';
+    });
+  </script>
+  <div id="tooltip" style="position: absolute; display: none;"></div>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="time.js"></script>
+  <script src="calender.js"></script>
+  <script src="chart.js"></script>
+  <script src="weather.js"></script>
+  <script src="heartbeat.js"></script>
+</body>
+
+</html>
